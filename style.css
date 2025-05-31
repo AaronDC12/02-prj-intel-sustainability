@@ -1,1 +1,205 @@
 /* Add your CSS here */
+
+/* Responsive and readable font size for all devices */
+body {
+  font-size: clamp(16px, 2.5vw, 22px); /* Always between 16px and 22px */
+  line-height: 1.6;
+}
+
+/* Main title uses the same stylish, easy-to-read font as timeline cards */
+h1 {
+  font-size: clamp(2em, 4vw, 2.5em);
+  font-weight: bold;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  white-space: normal; /* Allow the title to wrap to the next line if needed */
+  overflow-x: visible; /* No scroll bar for the title */
+}
+
+h2 {
+  font-size: clamp(1.3em, 2.5vw, 1.7em);
+  font-weight: bold;
+}
+
+h3 {
+  font-size: clamp(1.1em, 2vw, 1.3em);
+  font-weight: bold;
+}
+
+/* Arrange logos in a horizontal row */
+.logo-row {
+  display: flex;           /* Use flexbox to arrange items in a row */
+  align-items: center;     /* Vertically center the logos */
+  gap: 16px;               /* Space between logos */
+}
+
+/* Optional: Set a max height for logos to keep them the same size */
+.logo-row img {
+  max-height: 60px;        /* Adjust as needed */
+}
+
+/* Arrange the logo and header content side by side */
+.header-row {
+  display: flex;            /* Arrange children in a row */
+  align-items: center;      /* Vertically center items */
+  gap: 32px;                /* Space between logo and content */
+  margin-bottom: 24px;      /* Space below the header */
+}
+
+/* Optional: Limit the width of the content for better appearance */
+.header-content {
+  max-width: 500px;         /* Adjust as needed */
+}
+
+/* Arrange timeline cards in a horizontal row with scrolling */
+.timeline-row {
+  display: flex;                /* Arrange cards in a row */
+  flex-direction: row;          /* Make sure direction is horizontal */
+  gap: 24px;                    /* Space between cards */
+  overflow-x: auto;             /* Enable horizontal scrolling */
+  padding-bottom: 16px;         /* Space below cards for scrollbar */
+  scroll-behavior: smooth;      /* Smooth scrolling */
+}
+
+/* Responsive timeline card images */
+.card-img-info img {
+  width: 100%;
+  max-width: 180px;      /* Good fit on desktop */
+  min-width: 80px;       /* Never too small */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: 1px solid #d0d0d0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+/* Responsive card width */
+.timeline-row > div {
+  min-width: 220px;
+  max-width: 90vw;           /* Responsive max width */
+  background: #f9f9f9;          /* Light background for cards */
+  border-radius: 8px;           /* Rounded corners */
+  padding: 16px;                /* Space inside cards */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
+  transition: 
+    transform 0.2s ease,      /* Smooth move up */
+    border 0.2s ease,         /* Smooth border color change */
+    box-shadow 0.2s ease;     /* Smooth shadow change */
+  position: relative;         /* Needed for absolute positioning inside */
+  outline: none; /* Remove default outline */
+}
+
+/* Move the card up a bit on hover */
+.timeline-row > div:hover {
+  transform: translateY(-40px); /* Move the card up */
+  z-index: 2;                   /* Make sure the hovered card is on top */
+}
+
+/* Only highlight the card with .card-focused class */
+.timeline-row > div.card-focused {
+  border: 2px solid #2196f3;    /* Blue border for highlight */
+  box-shadow: 0 4px 16px rgba(33,150,243,0.10); /* Slight blue shadow */
+  z-index: 2;
+  transform: translateY(-40px); /* Move the focused card up */
+}
+
+/* Remove hover/focus highlight from other cards */
+.timeline-row > div:hover,
+.timeline-row > div:focus {
+  /* No highlight here, handled by .card-focused */
+  border: none;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Make cards focusable with keyboard for accessibility */
+.timeline-row > div {
+  cursor: pointer;      /* Show pointer cursor on hover */
+}
+.timeline-row > div:focus {
+  outline: none;        /* Remove default outline */
+}
+
+/* Make sure the card itself doesn't get too wide on small screens */
+.timeline-row > div {
+  max-width: 100%;       /* Card never exceeds the screen width */
+}
+
+/* On small screens, make everything fit nicely */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+  .timeline-row {
+    flex-direction: column; /* Stack cards vertically */
+    gap: 16px;              /* Less space between cards */
+  }
+  .timeline-row > div {
+    min-width: 0;           /* Remove minimum width for small screens */
+    width: 100%;            /* Cards take full width */
+    max-width: 100%;
+  }
+  .card-img-info img {
+    max-width: 90vw;         /* Image fills most of the card width */
+  }
+  .title-row img {
+    max-width: 80px;         /* Smaller title image on small screens */
+  }
+}
+
+/* Arrange the title image and paragraph side by side */
+.title-row {
+  display: flex;           /* Arrange children in a row */
+  align-items: center;     /* Vertically center items */
+  gap: 16px;               /* Space between image and text */
+}
+
+/* Optional: Control the size of the image */
+.title-row img {
+  max-width: 120px;        /* Adjust as needed */
+  height: auto;            /* Keep image aspect ratio */
+}
+
+/* Card image and info: hide the paragraph by default */
+.card-img-info p {
+  display: none; /* Hide the paragraph */
+  /* Use a stylish font for the hover content */
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  background: #e0f7fa; /* Light background for visibility */
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 8px;
+  font-size: 1.1em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  position: static;
+  transition: opacity 0.2s ease;
+  opacity: 0; /* Start hidden for smooth fade in */
+}
+
+/* Show the paragraph when the card is hovered */
+.timeline-row > div:hover .card-img-info p {
+  display: block;
+  opacity: 1; /* Fade in */
+}
+
+/* Remove the rule that shows the paragraph above the image */
+.card-img-info img:hover + p {
+  /* No longer needed, so leave this empty or remove */
+}
+
+/* Make card text a bit larger */
+.timeline-row > div p,
+.card-img-info p {
+  font-size: 1.1em;        /* Slightly larger paragraph text */
+}
+
+/* Stylish font for timeline card titles */
+.timeline-row > div h2,
+.timeline-row > div h3 {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+}
+
+/* Use the same stylish font for the paragraph inside the main title area */
+.header-content .title-row p {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+}
