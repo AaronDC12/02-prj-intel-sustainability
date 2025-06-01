@@ -50,63 +50,85 @@ h3 {
   max-width: 500px;         /* Adjust as needed */
 }
 
-/* Arrange timeline cards in a horizontal row with scrolling */
+/* Beginner-friendly styles for the main heading and paragraph under the title image */
+
+/* This makes the main heading (h1) have a blue background and white text */
+.header-content h1 {
+  background-color: rgb(49, 49, 133); /* Blue background */
+  color: white;           /* White text */
+  padding: 10px;          /* Space inside the heading */
+  border-radius: 5px;     /* Rounded corners */
+  width: 100%;            /* Fill all horizontal space of the container */
+  box-sizing: border-box; /* Include padding in the width */
+  text-align: center;     /* Center the text inside the heading */
+  display: block;         /* Make sure it behaves like a block element */
+  margin-left: 0;         /* Remove any space on the left */
+  margin-right: auto;     /* Only push space to the right if needed */
+}
+
+/* This makes the paragraph under the title image have a blue background and white text */
+.title-row p {
+  background-color: rgb(56, 56, 158); /* Blue background */
+  color: white;           /* White text */
+  padding: 10px;          /* Space inside the paragraph */
+  border-radius: 5px;     /* Rounded corners */
+  width: 100%;            /* Stretch to fill the container */
+  box-sizing: border-box; /* Include padding in the width */
+  text-align: center;     /* Center the text */
+  display: block;         /* Make sure it behaves like a block element */
+}
+
+/* Enable smooth horizontal scroll and snap for the timeline cards */
 .timeline-row {
-  display: flex;                /* Arrange cards in a row */
-  flex-direction: row;          /* Make sure direction is horizontal */
-  gap: 24px;                    /* Space between cards */
-  overflow-x: auto;             /* Enable horizontal scrolling */
-  padding-bottom: 16px;         /* Space below cards for scrollbar */
-  scroll-behavior: smooth;      /* Smooth scrolling */
+  scroll-behavior: smooth;         /* Smooth scrolling */
+  scroll-snap-type: x mandatory;   /* Snap horizontally to cards */
+  overflow-x: auto;                /* Allow horizontal scrolling */
+  display: flex;                   /* Arrange cards in a row */
+  gap: 12px;                       /* Space between cards */
+  padding: 16px 10px 10px 10px;    /* Padding around cards */
+  background: #f5f5f5;             /* Light background for contrast */
+  box-sizing: border-box;
 }
 
-/* Responsive timeline card images */
-.card-img-info img {
-  width: 100%;
-  max-width: 180px;      /* Good fit on desktop */
-  min-width: 80px;       /* Never too small */
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  border-radius: 8px;
-  border: 1px solid #d0d0d0;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-}
-
-/* Responsive card width */
+/* Make each card snap to the start of the scroll area */
 .timeline-row > div {
-  min-width: 220px;
-  max-width: 90vw;           /* Responsive max width */
-  background: #f9f9f9;          /* Light background for cards */
-  border-radius: 8px;           /* Rounded corners */
-  padding: 16px;                /* Space inside cards */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
-  transition: 
-    transform 0.2s ease,      /* Smooth move up */
-    border 0.2s ease,         /* Smooth border color change */
-    box-shadow 0.2s ease;     /* Smooth shadow change */
-  position: relative;         /* Needed for absolute positioning inside */
-  outline: none; /* Remove default outline */
+  scroll-snap-align: start;        /* Snap each card to the start */
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 10px;
+  min-width: 180px;
+  max-width: 180px;
+  flex: 0 0 180px;              /* Fixed width for each card */
+  text-align: left;
+  font-size: 0.95em;
+  transition: box-shadow 0.2s;
 }
 
 /* Move the card up a bit on hover */
 .timeline-row > div:hover {
-  transform: translateY(-40px); /* Move the card up */
-  z-index: 2;                   /* Make sure the hovered card is on top */
+  box-shadow: 0 4px 16px rgba(41,134,212,0.18);
 }
 
-/* Only highlight the card with .card-focused class */
+/* Only highlight and transform the card with .card-focused class */
 .timeline-row > div.card-focused {
   border: 2px solid #2196f3;    /* Blue border for highlight */
-  box-shadow: 0 4px 16px rgba(33,150,243,0.10); /* Slight blue shadow */
+  box-shadow: 0 8px 24px rgba(33,150,243,0.18), 0 2px 8px rgba(0,0,0,0.08); /* Slight blue shadow */
   z-index: 2;
-  transform: translateY(-40px); /* Move the focused card up */
+  transform: translateY(-40px) scale(1.05); /* Move up and slightly scale up */
+}
+
+/* Highlight the card title when the card is focused (hovered last) */
+.timeline-row > div.card-focused h2,
+.timeline-row > div.card-focused h3 {
+  color: #2196f3; /* Blue color for the focused card title */
+  text-shadow: 1px 2px 8px #b3e5fc; /* Soft glow for effect */
+  transition: color 0.2s, text-shadow 0.2s;
 }
 
 /* Remove hover/focus highlight from other cards */
 .timeline-row > div:hover,
 .timeline-row > div:focus {
-  /* No highlight here, handled by .card-focused */
   border: none;
   box-shadow: none;
   transform: none;
@@ -130,20 +152,32 @@ h3 {
   body {
     font-size: 16px;
   }
+  .hero-banner {
+    padding: 14px 4px 8px 4px;
+  }
+  .hero-logo {
+    max-width: 50px;
+    margin-bottom: 6px;
+  }
+  .hero-banner h1 {
+    font-size: 1em;
+  }
+  .hero-banner p {
+    font-size: 0.95em;
+    max-width: 98vw;
+  }
   .timeline-row {
-    flex-direction: column; /* Stack cards vertically */
-    gap: 16px;              /* Less space between cards */
+    gap: 8px;
+    padding: 8px 2px 6px 2px;
   }
   .timeline-row > div {
-    min-width: 0;           /* Remove minimum width for small screens */
-    width: 100%;            /* Cards take full width */
-    max-width: 100%;
+    min-width: 140px;
+    max-width: 140px;
+    padding: 6px;
+    font-size: 0.9em;
   }
   .card-img-info img {
-    max-width: 90vw;         /* Image fills most of the card width */
-  }
-  .title-row img {
-    max-width: 80px;         /* Smaller title image on small screens */
+    height: 50px;
   }
 }
 
@@ -162,29 +196,27 @@ h3 {
 
 /* Card image and info: hide the paragraph by default */
 .card-img-info p {
-  display: none; /* Hide the paragraph */
-  /* Use a stylish font for the hover content */
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-  background: #e0f7fa; /* Light background for visibility */
-  padding: 8px;
-  border-radius: 4px;
-  margin-top: 8px;
-  font-size: 1.1em;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  position: static;
-  transition: opacity 0.2s ease;
-  opacity: 0; /* Start hidden for smooth fade in */
+  display: none; /* Hide the details by default */
 }
 
-/* Show the paragraph when the card is hovered */
-.timeline-row > div:hover .card-img-info p {
-  display: block;
-  opacity: 1; /* Fade in */
+/* Show the details when hovering over the card */
+.timeline-row > div:hover .card-img-info p,
+.timeline-row > div:focus .card-img-info p {
+  display: block; /* Show the details */
+  background: #eaf3fa; /* Light background for details */
+  color: #222;         /* Dark text for readability */
+  padding: 8px 2px 4px 2px; /* Some padding for better look */
+  border-radius: 4px;  /* Rounded corners */
+  margin-top: 6px;     /* Space above the details */
+  position: relative;  /* Make sure the text is above the image */
+  z-index: 2;          /* Show text above the image */
 }
 
-/* Remove the rule that shows the paragraph above the image */
-.card-img-info img:hover + p {
-  /* No longer needed, so leave this empty or remove */
+/* Make the image a little transparent when hovering */
+.timeline-row > div:hover .card-img-info img,
+.timeline-row > div:focus .card-img-info img {
+  opacity: 0.3; /* Make the image see-through */
+  transition: opacity 0.3s; /* Smooth transition */
 }
 
 /* Make card text a bit larger */
@@ -202,4 +234,67 @@ h3 {
 /* Use the same stylish font for the paragraph inside the main title area */
 .header-content .title-row p {
   font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+}
+
+/* Make all timeline card images bigger and occupy the space under the card title */
+.card-img-info img {
+  width: 100%;                /* Image fills the card width */
+  max-width: 100%;            /* Allow image to use all available width in the card */
+  height: 160px;              /* Fixed height for a uniform look */
+  object-fit: contain;        /* Image fits nicely without stretching */
+  display: block;
+  margin: 0 auto 12px auto;   /* Center image and add space below */
+  border-radius: 8px;
+  background: #fff;           /* White background for images with transparency */
+}
+
+/* Make the 2020 card image match the same style as other cards */
+.timeline-row > div:nth-child(6) .card-img-info img {
+  max-width: 100%;            /* Same as other cards for consistency */
+  height: 160px;
+}
+
+/* When hovering over a card, make the image slightly larger and add a shadow */
+.timeline-row > div:hover .card-img-info img,
+.timeline-row > div.card-focused .card-img-info img {
+  transform: scale(1.08); /* Slightly enlarge the image */
+  box-shadow: 0 8px 24px rgba(33,150,243,0.15), 0 2px 8px rgba(0,0,0,0.10);
+}
+
+/* Hero banner styles for the top section */
+.hero-banner {
+  background: linear-gradient(135deg, #2986d4 0%, #1a357a 100%); /* Blue gradient */
+  color: white;                        /* White text */
+  text-align: center;                   /* Center all content */
+  padding: 24px 10px 16px 10px;         /* Less padding for a shorter banner */
+  width: 100%;                          /* Stretch across the page */
+  box-sizing: border-box;               /* Include padding in width */
+}
+
+.hero-logo {
+  max-width: 70px;                     /* Smaller logo */
+  margin-bottom: 12px;                  /* Less space below logo */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-banner h1 {
+  font-size: 1.4em;                     /* Smaller heading */
+  font-weight: bold;
+  margin: 0 0 8px 0;                   /* Less space below heading */
+  letter-spacing: 1px;
+}
+
+.hero-underline {
+  width: 40px;
+  border: 2px solid #3ec6ff;
+  margin: 0 auto 12px auto;
+}
+
+.hero-banner p {
+  font-size: 1em;
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.4;
 }

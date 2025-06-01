@@ -29,30 +29,14 @@
 
   <!-- Header / Hero Section -->
   <header>
-    <!-- Header container to arrange logo and content horizontally -->
-    <div class="header-row">
-      <!-- Logo Row: Place logos inside this container -->
-      <div class="logo-row">
-        <img src="img/intel-header-logo.svg" alt="Intel Logo" />
-        <!-- You can add more logos here if needed -->
-        <!-- <img src="img/another-logo.svg" alt="Another Logo" /> -->
-      </div>
-      <!-- Content container: Heading and description -->
-      <div class="header-content">
-        <!-- Main Heading -->
-        <h1>Sustainability Through the Ages</h1>
-        <!-- Container to arrange image and paragraph side by side -->
-        <div class="title-row">
-          <!-- Title image -->
-          <img src="img/Intel LogoMain.jpg" alt="Intel Main Logo" />
-          <!-- Paragraph next to the image -->
-          <p>
-            Explore Intel's journey through time, discovering how our commitment
-            to innovation has shaped a more sustainable future for technology 
-            and our planet.
-          </p>
-        </div>
-      </div>
+    <div class="hero-banner">
+      <img src="img/intel-header-logo.svg" alt="Intel Logo" class="hero-logo" />
+      <h1>SUSTAINABILITY THROUGH THE AGES</h1>
+      <hr class="hero-underline" />
+      <p>
+        Explore Intel's journey through time, discovering how our commitment<br>
+        to innovation has shaped a more sustainable future for technology and our planet.
+      </p>
     </div>
   </header>
 
@@ -122,7 +106,8 @@
       <h2>2006</h2>
       <h3>Peak GHG Emissions</h3>
       <div class="card-img-info">
-        <img src="https://placehold.co/250x100" alt="Placeholder Image" />
+        <!-- Make sure the image path is correct and inside the img folder -->
+        <img src="img/Intel 2006.png" alt="2006 Icon" />
         <p>
           This year marks Intel's highest annual greenhouse gas emissions 
           for operations. Over subsequent years, Intel invests heavily in 
@@ -137,7 +122,7 @@
       <h2>2020</h2>
       <h3>RISE Strategy</h3>
       <div class="card-img-info">
-        <img src="https://placehold.co/250x100" alt="Placeholder Image" />
+        <img src="img/Intel Rise Stratergy.png" alt="2020 Icon" />
         <p>
           Intel launches its RISE (Responsible, Inclusive, Sustainable, 
           Enabling) strategy and 2030 goals, aiming to drive industry-wide 
@@ -151,7 +136,7 @@
       <h2>2022</h2>
       <h3>Net-Zero By 2040</h3>
       <div class="card-img-info">
-        <img src="https://placehold.co/250x100" alt="Placeholder Image" />
+        <img src="img/Intel 2022.webp" alt="2022 Icon" />
         <p>
           Intel announces its commitment to achieve net-zero greenhouse 
           gas emissions (Scope 1 and 2) across its global operations 
@@ -165,7 +150,7 @@
       <h2>2023</h2>
       <h3>Renewable Electricity</h3>
       <div class="card-img-info">
-        <img src="https://placehold.co/250x100" alt="Placeholder Image" />
+        <img src="img/Intel 2023.jpeg" alt="2023 Icon" />
         <p>
           The company achieves 99% renewable electricity usage worldwide, 
           helping to drastically lower carbon emissions and driving progress 
@@ -179,7 +164,7 @@
       <h2>2024</h2>
       <h3>Sustainability Summit</h3>
       <div class="card-img-info">
-        <img src="https://placehold.co/250x100" alt="Placeholder Image" />
+        <img src="img/Intel 2024.webp" alt="2024 Icon" />
         <p>
           Intel hosts its first Sustainability Summit, uniting suppliers, 
           government officials, and industry leaders to collaborate on 
@@ -189,31 +174,6 @@
     </div>
   </section>
   <p>Scroll to view timeline | Hover over cards to learn more!</p>
-  <!-- When you hover over a timeline card, it will scroll down enough for you to read all the info in that card -->
-  <script>
-    // For each timeline card, scroll it into view when hovered
-    document.querySelectorAll('.timeline-row > div').forEach(function(card) {
-      card.addEventListener('mouseenter', function() {
-        // Remove focus style from all cards
-        document.querySelectorAll('.timeline-row > div').forEach(function(otherCard) {
-          otherCard.classList.remove('card-focused');
-        });
-        // Add focus style to the hovered card
-        card.classList.add('card-focused');
-        // Scroll so the bottom of the card is visible (so all info can be read)
-        if (card._scrollTimeout) clearTimeout(card._scrollTimeout);
-        card._scrollTimeout = setTimeout(function() {
-          // Scroll the card so its bottom is visible in the viewport
-          card.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center' });
-        }, 600);
-      });
-    });
-    // Optional: Remove focus if mouse leaves the timeline area
-    document.querySelector('.timeline-row').addEventListener('mouseleave', function() {
-      document.querySelectorAll('.timeline-row > div').forEach(function(card) {
-        card.classList.remove('card-focused');
-      });
-    });
-  </script>
+  <!-- Removed the script that auto-scrolls on hover -->
 </body>
 </html>
