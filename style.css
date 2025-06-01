@@ -81,8 +81,7 @@ h3 {
 /* Enable smooth horizontal scroll and snap for the timeline cards */
 .timeline-row {
   scroll-behavior: smooth;         /* Smooth scrolling */
-  scroll-snap-type: x mandatory;   /* Snap horizontally to cards */
-  overflow-x: auto;                /* Allow horizontal scrolling */
+z  overflow-x: auto;                /* Allow horizontal scrolling */
   display: flex;                   /* Arrange cards in a row */
   gap: 12px;                       /* Space between cards */
   padding: 16px 10px 10px 10px;    /* Padding around cards */
