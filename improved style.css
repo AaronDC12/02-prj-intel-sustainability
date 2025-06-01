@@ -1,0 +1,236 @@
+/* Import stylish Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@700;800&display=swap');
+
+/* Use a stylish font and set background for the whole page */
+body {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif; /* Stylish, easy-to-read font */
+  background: #31659f;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Style the hero section with a blue background and white text */
+.hero-text {
+  background: #1976d2;
+  color: #fff;
+  padding: 40px 20px 28px 20px;
+  border-radius: 16px;
+  text-align: center;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+
+/* Center the SVG logo at the top */
+.logo-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Make the main heading more stylish and larger */
+.hero-text h1 {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif; /* Stylish heading font */
+  font-size: 2.5em;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin: 20px 0 14px 0;
+  color: #fff;
+  text-shadow: 1px 2px 12px rgba(0,0,0,0.12);
+}
+
+/* Style the subheading/description */
+.hero-text p {
+  font-size: 1.25em;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  color: #e3f2fd;
+  margin: 0;
+  margin-top: 10px;
+}
+
+/* Make sure the hero logo image looks good on blue */
+.hero-text img {
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px;
+  margin-bottom: 10px;
+  max-width: 120px;
+}
+
+/* The section will now scroll horizontally using flexbox */
+section {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 24px;
+  padding-top: 24px;
+  align-items: flex-start;
+  background: #f4f4f4;
+  border-radius: 16px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  scroll-snap-type: x mandatory; /* Enable horizontal snap */
+  scroll-behavior: smooth;       /* Smooth scrolling */
+}
+
+/* Each card will be a block element, stacking horizontally now */
+section > div {
+  flex: 0 0 auto; /* Allow cards to size based on content */
+  margin-bottom: 0;
+  border: 1.5px solid #ccc;
+  border-radius: 12px;
+  padding: 18px 14px 16px 14px;
+  background: #1976d2;
+  color: #fff;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  width: auto; /* Let width fit content */
+  min-width: 220px; /* Minimum width for small content */
+  max-width: 340px; /* Prevent cards from getting too wide */
+  box-shadow: 2px 2px 12px rgba(0,0,0,0.07);
+  transition: box-shadow 0.2s, border 0.2s;
+  scroll-snap-align: start; /* Snap each card to the start */
+}
+
+/* Make headings in cards more stylish */
+section > div h2 {
+  color: #fff;
+  font-size: 1.5em;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif; /* Stylish heading font */
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+  text-shadow: 1px 2px 8px rgba(0,0,0,0.10);
+}
+
+section > div h3 {
+  color: #bbdefb;
+  font-size: 1.1em;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif; /* Stylish heading font */
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+/* Card paragraph styling */
+section > div p, .card-details p {
+  font-size: 1em;
+  color: #e3f2fd;
+  margin: 0;
+  margin-top: 6px;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+/* Make images fit the card width */
+section > div img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+/* Timeline container styles */
+.timeline {
+  /* Use flexbox to arrange cards in a row */
+  display: flex;
+  flex-direction: row; /* Cards go left-to-right */
+  overflow-x: auto;    /* Enable horizontal scrolling */
+  gap: 16px;           /* Space between cards */
+  padding-bottom: 16px;
+  padding-top: 16px;
+  /* Prevent vertical scroll bar from showing */
+  align-items: flex-start;
+}
+
+/* Each timeline card styles */
+.timeline-card {
+  /* Cards stack horizontally by default */
+  flex: 0 0 250px; /* Do not shrink, do not grow, fixed width */
+  margin-bottom: 0; /* Remove bottom margin, use gap instead */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  background: #fff;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+  /* Add a little hover effect for fun */
+  transition: transform 0.2s;
+}
+.timeline-card:hover {
+  transform: translateY(-4px) scale(1.03);
+}
+
+/* Highlight the border when hovering over a card */
+section > div:hover,
+.timeline-card:hover {
+  border: 2px solid #0071c5;
+  box-shadow: 0 0 16px rgba(0,113,197,0.18);
+  transform: translateY(-4px) scale(1.03); /* Add dynamic effect to all cards */
+  transition: transform 0.2s, box-shadow 0.2s, border 0.2s;
+}
+
+/* Make images fit the card width */
+.timeline-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Hide card details by default */
+.card-details {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+/* Show card details when hovering over the card */
+section > div:hover .card-details {
+  max-height: 200px;
+  opacity: 1;
+}
+
+/* Style the scroll/hint text at the bottom */
+body > p {
+  text-align: center;
+  font-size: 1.1em;
+  color: #e3f2fd;
+  margin-top: 18px;
+  margin-bottom: 0;
+  letter-spacing: 0.5px;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+/* Responsive: Stack cards vertically on small screens */
+@media (max-width: 600px) {
+  section {
+    flex-direction: column;
+    gap: 18px;
+    overflow-x: visible;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  section > div {
+    width: 100%;
+    flex: 1 1 100%;
+    max-width: 98vw;
+  }
+  .timeline {
+    flex-direction: column;
+    gap: 16px;
+    overflow-x: visible;
+  }
+  .timeline-card {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+  .hero-text {
+    padding: 28px 8px 18px 8px;
+    font-size: 1em;
+  }
+}
